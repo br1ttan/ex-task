@@ -1,0 +1,41 @@
+<ng-container *ngIf="rates$ | async as rates">
+  <div class="container">
+    <div class="from">
+      <mat-form-field class="field">
+        <mat-label>Choose a currency</mat-label>
+        <mat-select [(value)]="fromCurrency">
+          <mat-option *ngFor="let rate of rates" [value]="rate.currency">
+            {{ rate.currency }}
+            {{ rate.symbol }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #valueFrom [value]="valueFromInput" matInput (input)="setLastTouchedField(lastTouchedField.From)" />
+      </mat-form-field>
+    </div>
+  
+    <button
+      mat-fab
+      [color]="'primary'"
+      [disabled]="isButtonDisabled"
+      (click)="handleExchangeClick(valueFrom.value, valueTo.value)"
+    >
+      <mat-icon>currency_exchange</mat-icon>
+    </button>
+    <div class="to">
+      <mat-form-field class="field">
+        <mat-label>Choose a currency</mat-label>
+        <mat-select [(value)]="toCurrency">
+          <mat-option *ngFor="let rate of rates" [value]="rate.currency">
+            {{ rate.currency }}
+            {{ rate.symbol }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #valueTo matInput [value]="valueToInput" (input)="setLastTouchedField(lastTouchedField.To)" />
+      </mat-form-field>
+    </div>
+  </div>
+</ng-container>

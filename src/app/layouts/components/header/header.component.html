@@ -1,0 +1,15 @@
+<mat-toolbar [color]="'primary'">
+   <span>My App</span>
+   <button mat-icon-button>
+     <mat-icon>wallet</mat-icon>
+   </button>
+ 
+  <ng-container *ngIf="rates$ | async as rates">
+    <div>
+      1₴ = 
+      <span *ngFor="let rate of rates.slice(1, 3)" class="currency">
+        {{ rate.cost }}{{ rate.symbol }}
+      </span>
+    </div>
+  </ng-container>
+ </mat-toolbar>

@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    align-items: center;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 30px;
+}
